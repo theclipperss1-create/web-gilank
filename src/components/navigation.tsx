@@ -10,8 +10,7 @@ interface NavigationProps {
 }
 
 /**
- * Minimalist Navigation
- * Apple-style glassmorphic navigation with subtle hover effects
+ * Minimalist Navigation with Apple glassmorphism
  */
 export function Navigation({
   links = [
@@ -26,20 +25,32 @@ export function Navigation({
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
 
-      // Update active section based on scroll position
       const sections = links.map((link) => link.href.replace("#", ""));
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 200) {
-            setActiveSection(`#${section}`);
-            break;
+      let currentSection = "";
+      
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      if (scrollPosition >= documentHeight - 100) {
+        currentSection = "#contact";
+      } else {
+        for (const section of sections) {
+          if (section === "contact") continue;
+          
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 200 && rect.bottom >= 200) {
+              currentSection = `#${section}`;
+              break;
+            }
           }
         }
       }
+      
+      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -52,8 +63,8 @@ export function Navigation({
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50",
-        "transition-all duration-500 ease-apple-slow",
-        isScrolled ? "py-4" : "py-6",
+        "transition-all duration-500",
+        isScrolled ? "py-3" : "py-5",
         className
       )}
     >
@@ -61,23 +72,19 @@ export function Navigation({
         <div
           className={cn(
             "flex items-center justify-between",
-            "rounded-full px-6 py-4",
-            "transition-all duration-500 ease-apple-slow",
+            "rounded-full px-5 py-2.5",
+            "transition-all duration-500",
             isScrolled
-              ? "glass bg-black/40 shadow-lg shadow-black/20"
-              : "bg-transparent"
+              ? "bg-black/30 backdrop-blur-2xl border border-white/5 shadow-lg shadow-black/10"
+              : "bg-transparent backdrop-blur-0 border border-transparent"
           )}
-          style={{
-            backdropFilter: isScrolled ? "blur(20px)" : "none",
-            WebkitBackdropFilter: isScrolled ? "blur(20px)" : "none",
-          }}
         >
           {/* Logo */}
           <a
             href="#"
-            className="text-lg font-semibold text-white tracking-tight hover:text-white/80 transition-colors duration-300"
+            className="text-base font-semibold text-white/90 hover:text-white transition-colors duration-300 tracking-tight"
           >
-            Portfolio
+            Gilank
           </a>
 
           {/* Navigation Links */}
@@ -87,11 +94,11 @@ export function Navigation({
                 <a
                   href={link.href}
                   className={cn(
-                    "px-4 py-2 rounded-full text-sm font-medium",
-                    "transition-all duration-300 ease-apple",
+                    "px-4 py-2 rounded-full text-xs font-medium tracking-wide",
+                    "transition-all duration-300",
                     activeSection === link.href
                       ? "text-white bg-white/10"
-                      : "text-muted-foreground hover:text-white hover:bg-white/5"
+                      : "text-white/60 hover:text-white hover:bg-white/5"
                   )}
                 >
                   {link.label}

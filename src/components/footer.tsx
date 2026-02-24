@@ -1,25 +1,21 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { BodyText, Caption } from "./typography";
+import { Caption } from "./typography";
 import { MagneticButton } from "./micro-interactions";
 
 interface FooterProps {
   className?: string;
-  socialLinks?: { label: string; href: string; icon?: React.ReactNode }[];
+  socialLinks?: { label: string; href: string }[];
 }
 
-/**
- * Minimalist Footer
- * Apple-style clean footer with subtle styling
- */
 export function Footer({
   className,
   socialLinks = [
-    { label: "GitHub", href: "#" },
-    { label: "LinkedIn", href: "#" },
-    { label: "Twitter", href: "#" },
-    { label: "Email", href: "mailto:hello@example.com" },
+    { label: "GitHub", href: "https://github.com/theclipperss1-create" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/m-gilank/" },
+    { label: "Twitter", href: "https://x.com/TuckerNash68095" },
+    { label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=lankdevv@gmail.com&su=Contact Inquiry" },
   ],
 }: FooterProps) {
   const currentYear = new Date().getFullYear();
@@ -38,42 +34,31 @@ export function Footer({
           {/* Left Column - CTA */}
           <div>
             <Caption className="mb-4">Get In Touch</Caption>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6 text-tight">
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
               Let&apos;s work together
             </h2>
-            <BodyText className="max-w-md">
+            <p className="text-white/60 max-w-md">
               Have a project in mind? I&apos;m always open to discussing new opportunities
               and interesting collaborations.
-            </BodyText>
+            </p>
 
             {/* CTA Button */}
             <div className="mt-8">
               <MagneticButton>
                 <a
-                  href="mailto:hello@example.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=lankdevv@gmail.com&su=Contact Inquiry"
                   className={cn(
-                    "inline-flex items-center gap-3",
-                    "px-6 py-4 rounded-full",
-                    "bg-white text-black",
-                    "font-medium text-sm",
-                    "transition-all duration-500 ease-apple-slow",
+                    "inline-flex items-center gap-2",
+                    "px-6 py-3.5 rounded-full",
+                    "bg-white text-black font-medium text-sm",
+                    "transition-all duration-300",
                     "hover:bg-white/90 hover:scale-105",
                     "active:scale-95"
                   )}
                 >
                   Say Hello
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
               </MagneticButton>
@@ -83,19 +68,18 @@ export function Footer({
           {/* Right Column - Social Links */}
           <div className="md:flex md:flex-col md:justify-end">
             <Caption className="mb-6">Connect</Caption>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {socialLinks.map((link) => (
                 <MagneticButton key={link.label} strength={25}>
                   <a
                     href={link.href}
                     className={cn(
-                      "px-5 py-3 rounded-full",
-                      "text-sm font-medium",
-                      "text-muted-foreground",
-                      "bg-white/[0.05]",
-                      "border border-white/5",
-                      "transition-all duration-300 ease-apple",
-                      "hover:text-white hover:bg-white/10 hover:border-white/10"
+                      "px-4 py-2.5 rounded-full",
+                      "text-xs font-medium tracking-wide",
+                      "text-white/60",
+                      "bg-white/[0.03] border border-white/5",
+                      "transition-all duration-300",
+                      "hover:text-white hover:bg-white/[0.06] hover:border-white/10"
                     )}
                   >
                     {link.label}
@@ -107,17 +91,14 @@ export function Footer({
         </div>
 
         {/* Bottom Bar */}
-        <div
-          className={cn(
-            "mt-16 md:mt-24 pt-8",
-            "border-t border-white/5",
-            "flex flex-col md:flex-row justify-between items-center gap-4"
-          )}
-        >
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Portfolio. All rights reserved.
+        <div className={cn(
+          "mt-16 pt-8 border-t border-white/5",
+          "flex flex-col md:flex-row justify-between items-center gap-4"
+        )}>
+          <p className="text-xs text-white/40">
+            © {currentYear} Gilank. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs text-white/40">
             Designed with Apple aesthetics in mind.
           </p>
         </div>
