@@ -1,161 +1,154 @@
-"use client";
-
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import Chat from "@/components/chat";
-import { Button } from "@/components/ui/button";
-import {
-  CheckCircle,
-  Zap,
-  Database,
-  Shield,
-  ExternalLink,
-} from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
-import Image from "next/image";
+import { Hero } from "@/components/hero";
+import { BentoGrid } from "@/components/bento-grid";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { FadeIn, ScaleIn } from "@/components/micro-interactions";
+import { BodyText, SectionHeading, Caption } from "@/components/typography";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <main className="relative min-h-screen bg-background overflow-x-hidden">
+      {/* Navigation */}
+      <Navigation />
+
       {/* Hero Section */}
-      <div className="text-center py-12 sm:py-16 relative px-4">
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <ThemeToggle />
-            <SignedOut>
-              <SignInButton>
-                <Button size="sm" className="text-xs sm:text-sm">
-                  Sign In
-                </Button>
-              </SignInButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </div>
-        </div>
+      <Hero
+        title="Crafting Digital Excellence"
+        subtitle="Hello, My Name is Gilank"
+        description="A passionate developer creating elegant solutions that blend design, technology, and innovation."
+      />
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-4">
-          <Image
-            src="/codeguide-logo.png"
-            alt="CodeGuide Logo"
-            width={50}
-            height={50}
-            className="rounded-xl sm:w-[60px] sm:h-[60px]"
-          />
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent">
-            CodeGuide Starter
-          </h1>
-        </div>
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-          Build faster with your AI coding agent
-        </p>
-      </div>
-
-      <main className="container mx-auto px-4 sm:px-6 pb-12 sm:pb-8 max-w-5xl">
-        <div className="text-center mb-8">
-          <div className="text-4xl sm:text-5xl mb-2">⚠️</div>
-          <div className="font-bold text-lg sm:text-xl mb-1">Setup Required</div>
-          <div className="text-sm sm:text-base text-muted-foreground">
-            Add environment variables to get started
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-          {/* Clerk */}
-          <div className="text-center p-3 sm:p-4 rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10">
-            <div className="flex justify-center mb-3">
-              <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />
-            </div>
-            <div className="font-semibold mb-2 text-sm sm:text-base">
-              Clerk Auth
-            </div>
-            <div className="text-xs text-muted-foreground mb-2">
-              <div className="font-mono bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded mb-1">NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY</div>
-              <div className="font-mono bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded">CLERK_SECRET_KEY</div>
-            </div>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() =>
-                window.open("https://dashboard.clerk.com", "_blank")
-              }
-              className="w-full text-xs sm:text-sm"
-            >
-              <ExternalLink className="w-3 h-3 mr-1" />
-              Dashboard
-            </Button>
-          </div>
-
-          {/* Supabase */}
-          <div className="text-center p-3 sm:p-4 rounded-lg bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10">
-            <div className="flex justify-center mb-3">
-              <Database className="w-6 h-6 sm:w-8 sm:h-8 text-green-500" />
-            </div>
-            <div className="font-semibold mb-2 text-sm sm:text-base">
-              Supabase DB
-            </div>
-            <div className="text-xs text-muted-foreground mb-2">
-              <div className="font-mono bg-green-100 dark:bg-green-800 px-2 py-1 rounded mb-1">NEXT_PUBLIC_SUPABASE_URL</div>
-              <div className="font-mono bg-green-100 dark:bg-green-800 px-2 py-1 rounded">NEXT_PUBLIC_SUPABASE_ANON_KEY</div>
-            </div>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() =>
-                window.open("https://supabase.com/dashboard", "_blank")
-              }
-              className="w-full text-xs sm:text-sm"
-            >
-              <ExternalLink className="w-3 h-3 mr-1" />
-              Dashboard
-            </Button>
-          </div>
-
-          {/* AI */}
-          <div className="text-center p-3 sm:p-4 rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 sm:col-span-2 md:col-span-1">
-            <div className="flex justify-center mb-3">
-              <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />
-            </div>
-            <div className="font-semibold mb-2 text-sm sm:text-base">
-              AI SDK
-            </div>
-            <div className="text-xs text-muted-foreground mb-2">
-              <div className="font-mono bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded mb-1">OPENAI_API_KEY</div>
-              <div className="font-mono bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded">ANTHROPIC_API_KEY</div>
-            </div>
-            <div className="grid grid-cols-2 gap-1 sm:gap-2">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() =>
-                  window.open("https://platform.openai.com", "_blank")
-                }
-                className="text-xs px-1 sm:px-2"
+      {/* About Section */}
+      <section id="about" className="px-6 md:px-12 lg:px-24 py-24 md:py-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left - Profile Image */}
+            <ScaleIn>
+              <div
+                className={cn(
+                  "relative aspect-square max-w-md mx-auto",
+                  "rounded-[32px]",
+                  "glass-card",
+                  "overflow-hidden"
+                )}
               >
-                OpenAI
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() =>
-                  window.open("https://console.anthropic.com", "_blank")
-                }
-                className="text-xs px-1 sm:px-2"
-              >
-                Anthropic
-              </Button>
-            </div>
+                {/* Profile Image - Ganti src dengan path foto kamu */}
+                <img
+                  src="/images/profile.jpg"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+                
+                {/* Overlay gradient for style */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                
+                {/* Optional: Experience badge di pojok */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="text-4xl md:text-5xl font-bold text-white text-tight">
+                    2+
+                  </div>
+                  <p className="text-white/80 text-xs uppercase tracking-widest mt-1">
+                    Years Experience
+                  </p>
+                </div>
+              </div>
+            </ScaleIn>
+
+            {/* Right - Content */}
+            <FadeIn direction="left" delay={200}>
+              <Caption className="mb-4">About Me</Caption>
+              <SectionHeading className="text-white mb-6">
+                Building products that matter
+              </SectionHeading>
+              <BodyText className="mb-6">
+                I&apos;m a full-stack vibe coder with a passion for creating beautiful,
+                functional, and user-centered digital experiences. With over 2 years
+                of experience in web development, I specialize in building products
+                that combine aesthetic excellence with technical precision.
+              </BodyText>
+              <BodyText>
+                My approach is rooted in the belief that great design should be
+                invisible – it should feel natural, intuitive, and effortless.
+                Every project is an opportunity to push boundaries and create
+                something extraordinary.
+              </BodyText>
+
+              {/* Skills */}
+              <div className="mt-10">
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-4">
+                  Technologies
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    "React",
+                    "Next.js",
+                    "TypeScript",
+                    "Node.js",
+                    "Python",
+                    "AWS",
+                    "PostgreSQL",
+                    "Figma",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-4 py-2 text-sm rounded-full bg-white/[0.05] border border-white/10 text-muted-foreground"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
+      </section>
 
-        {/* Chat Section */}
-        <SignedIn>
-          <div className="mt-6 sm:mt-8">
-            <Chat />
-          </div>
-        </SignedIn>
-      </main>
-    </div>
+      {/* Work Section - Bento Grid */}
+      <section id="work">
+        <BentoGrid
+          title="Selected Work"
+          subtitle="Featured Projects"
+          className="bg-gradient-to-b from-transparent via-white/[0.02] to-transparent"
+        />
+      </section>
+
+      {/* Stats Section */}
+      <section className="px-6 md:px-12 lg:px-24 py-24 md:py-32">
+        <div className="max-w-7xl mx-auto">
+          <FadeIn>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+              {[
+                { value: "50+", label: "Projects Completed" },
+                { value: "30+", label: "Happy Clients" },
+                { value: "5+", label: "Years Experience" },
+                { value: "10+", label: "Awards Won" },
+              ].map((stat, index) => (
+                <FadeIn key={stat.label} delay={index * 100} direction="up">
+                  <div
+                    className={cn(
+                      "text-center p-8 rounded-[24px]",
+                      "glass-card",
+                      "transition-all duration-500 ease-apple-slow",
+                      "hover:border-white/20 hover:shadow-lg hover:shadow-white/[0.05]"
+                    )}
+                  >
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-2 text-tight">
+                      {stat.value}
+                    </div>
+                    <p className="text-sm text-muted-foreground uppercase tracking-widest">
+                      {stat.label}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
+    </main>
   );
 }
