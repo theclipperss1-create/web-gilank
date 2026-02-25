@@ -39,7 +39,7 @@ export default function Home() {
               >
                 <div className="relative w-full h-full rounded-2xl overflow-hidden transition-transform duration-700 hover:scale-[1.02]">
                   <Image
-                    src="/images/profile.svg"
+                    src="/images/profile.jpeg"
                     alt="Profile"
                     fill
                     className="object-cover"
