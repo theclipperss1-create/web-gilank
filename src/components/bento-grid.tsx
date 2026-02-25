@@ -223,7 +223,7 @@ const defaultProjects: Project[] = [
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Markdown"],
     image: "/images/markdown-note.jpeg",
     link: "https://minimalist-markdown-note.vercel.app/",
-    isExternal: false, // Opens project detail page
+    isExternal: true, // Opens external link directly
   },
   {
     id: "2",
