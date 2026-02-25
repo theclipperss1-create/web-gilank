@@ -1,24 +1,38 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { useChat } from "@ai-sdk/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { AlertCircle, Bot, User } from "lucide-react";
+import { useState } from "react";
 
 export default function Chat() {
   const {
     messages,
-    input,
-    handleInputChange,
-    handleSubmit,
     error,
-    isLoading: chatLoading,
+    sendMessage,
+    status,
   } = useChat({
     onError: (error) => {
       console.error("Chat error:", error);
     },
   });
+
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+    sendMessage({ parts: [{ type: "text", text: inputValue }] });
+    setInputValue("");
+  };
+
+  const chatLoading = status === "submitted" || status === "streaming";
 
   return (
     <div className="flex flex-col w-full max-w-2xl mx-auto">
@@ -54,8 +68,8 @@ export default function Chat() {
             </p>
           </Card>
         ) : (
-          messages.map((m) => (
-            <Card key={m.id} className="p-4">
+          messages.map((m, index) => (
+            <Card key={index} className="p-4">
               <div className="flex items-center gap-2 mb-2">
                 {m.role === "user" ? (
                   <User className="w-4 h-4 text-blue-600" />
@@ -67,7 +81,9 @@ export default function Chat() {
                 </span>
               </div>
               <div className="whitespace-pre-wrap text-sm leading-relaxed pl-6">
-                {m.content}
+                {m.parts?.map((part, i) => 
+                  part.type === "text" ? part.text : null
+                )}
               </div>
             </Card>
           ))
@@ -96,15 +112,15 @@ export default function Chat() {
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="flex space-x-2">
+      <form onSubmit={onSubmit} className="flex space-x-2">
         <Input
-          value={input}
+          value={inputValue}
           placeholder="Type your message..."
           onChange={handleInputChange}
           className="flex-1"
           disabled={chatLoading}
         />
-        <Button type="submit" disabled={chatLoading || !input.trim()}>
+        <Button type="submit" disabled={chatLoading || !inputValue.trim()}>
           {chatLoading ? "Sending..." : "Send"}
         </Button>
       </form>
