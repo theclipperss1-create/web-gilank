@@ -62,12 +62,10 @@ export default function Home() {
                 Junior Full-Stack Vibe Coder
               </SectionHeading>
               <BodyText className="mb-6 text-white/70">
-                I&apos;m a junior full-stack developer who loves coding with the flow. 
-                I build modern web applications using cutting-edge technologies while 
-                keeping security at the forefront of every project.
+               Full-Stack Developer by trade, Vibe Coder by spirit. I build products that don't just work they hit. Over 2 years of crafting digital spaces where technical precision meets high-energy aesthetics. I care about the stack, but I care more about the flow. If it doesn't feel right, it isn't finished.
               </BodyText>
               <BodyText className="text-white/70">
-                When I&apos;m not coding, I&apos;m diving deep into cyber security — learning 
+                When I&apos;m not coding, I&apos;m diving deep into cyber security learning 
                 about vulnerabilities, secure coding practices, and how to protect 
                 digital assets. I believe great software is not just functional, but 
                 also secure by design.
