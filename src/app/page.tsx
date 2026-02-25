@@ -64,10 +64,7 @@ export default function Home() {
                 Building products that matter
               </SectionHeading>
               <BodyText className="mb-6 text-white/70">
-                I&apos;m a full-stack developer with a passion for creating beautiful,
-                functional, and user-centered digital experiences. With over 2 years
-                of experience in web development, I specialize in building products
-                that combine aesthetic excellence with technical precision.
+                Full Stack Developer by trade, Vibe Coder by spirit. I build products that don&apos;t just work—they hit. Over 2 years of crafting digital spaces where technical precision meets high energy aesthetics. I care about the stack, but I care more about the flow. If it doesn&apos;t feel right, it isn&apos;t finished.
               </BodyText>
               <BodyText className="text-white/70">
                 My approach is rooted in the belief that great design should be
