@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { FadeIn, ScaleIn } from "@/components/micro-interactions";
 import { BodyText, SectionHeading, Caption } from "@/components/typography";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -37,10 +38,11 @@ export default function Home() {
                 )}
               >
                 <div className="relative w-full h-full rounded-2xl overflow-hidden transition-transform duration-700 hover:scale-[1.02]">
-                  <img
-                    src="/images/profile.jpeg"
+                  <Image
+                    src="/images/profile.svg"
                     alt="Profile"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>

@@ -81,7 +81,7 @@ export default function Chat() {
                 </span>
               </div>
               <div className="whitespace-pre-wrap text-sm leading-relaxed pl-6">
-                {m.parts?.map((part, i) => 
+                {m.parts?.map((part) =>
                   part.type === "text" ? part.text : null
                 )}
               </div>

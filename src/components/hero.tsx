@@ -2,7 +2,6 @@
 
 import { HeroHeading, BodyText, Caption } from "./typography";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 
 interface HeroProps {
   title?: string;
@@ -20,12 +19,6 @@ export function Hero({
   description = "A passionate developer creating elegant solutions that blend design, technology, and innovation.",
   className,
 }: HeroProps) {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   return (
     <section
       className={cn(
@@ -40,9 +33,9 @@ export function Hero({
         {/* Soft gradient orbs */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-purple-500/8 to-blue-500/8 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-to-r from-cyan-500/6 to-emerald-500/6 rounded-full blur-[100px]" />
-        
+
         {/* Subtle grid pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
@@ -61,8 +54,7 @@ export function Hero({
             "inline-flex items-center gap-2 px-4 py-2 rounded-full",
             "bg-white/[0.04] border border-white/8",
             "backdrop-blur-xl",
-            "transition-all duration-1000 ease-apple-slow",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            "animate-in fade-in slide-in-to-bottom-4 duration-1000"
           )}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-400 to-blue-400 animate-pulse" />
@@ -76,8 +68,7 @@ export function Hero({
           className={cn(
             "mb-6",
             "bg-gradient-to-b from-white via-white to-white/80 bg-clip-text text-transparent",
-            "transition-all duration-1000 ease-apple-slow delay-100",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            "animate-in fade-in slide-in-to-bottom-8 duration-1000 delay-100"
           )}
         >
           {title}
@@ -88,8 +79,7 @@ export function Hero({
           className={cn(
             "max-w-2xl mx-auto",
             "text-white/70",
-            "transition-all duration-1000 ease-apple-slow delay-200",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            "animate-in fade-in slide-in-to-bottom-8 duration-1000 delay-200"
           )}
         >
           {description}
@@ -101,8 +91,7 @@ export function Hero({
             "mx-auto mt-12",
             "w-24 h-px",
             "bg-gradient-to-r from-transparent via-white/20 to-transparent",
-            "transition-all duration-1000 ease-apple-slow delay-300",
-            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
+            "animate-in fade-in zoom-in-90 duration-1000 delay-300"
           )}
         />
 
@@ -110,8 +99,7 @@ export function Hero({
         <div
           className={cn(
             "mt-16 flex flex-wrap justify-center gap-12 md:gap-20",
-            "transition-all duration-1000 ease-apple-slow delay-400",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            "animate-in fade-in slide-in-to-bottom-8 duration-1000 delay-400"
           )}
         >
           {[

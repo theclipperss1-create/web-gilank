@@ -90,14 +90,12 @@ interface BentoCardProps {
 }
 
 function BentoCard({ project, index, isVisible }: BentoCardProps) {
-  const CardWrapper = project.link ? "a" : "article";
-
+  const projectSlug = project.title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  
   return (
-    <CardWrapper
+    <a
+      href={`/projects/${projectSlug}`}
       data-index={index}
-      href={project.link || "#"}
-      target={project.link?.startsWith("http") ? "_blank" : undefined}
-      rel={project.link?.startsWith("http") ? "noopener noreferrer" : undefined}
       className={cn(
         "group relative block",
         "rounded-2xl overflow-hidden",
@@ -108,7 +106,7 @@ function BentoCard({ project, index, isVisible }: BentoCardProps) {
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-8",
-        project.link && "cursor-pointer"
+        "cursor-pointer"
       )}
     >
       {/* Card Content */}
@@ -151,7 +149,7 @@ function BentoCard({ project, index, isVisible }: BentoCardProps) {
           </div>
         </div>
       </div>
-    </CardWrapper>
+    </a>
   );
 }
 
@@ -159,27 +157,36 @@ function BentoCard({ project, index, isVisible }: BentoCardProps) {
 const defaultProjects: Project[] = [
   {
     id: "1",
+    title: "Markdown Note",
+    description:
+      "A clean and minimalist note-taking application with Markdown support, real-time preview, and local storage persistence.",
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Markdown"],
+    image: "/images/markdown-note.jpeg",
+    link: "https://minimalist-markdown-note.vercel.app/",
+  },
+  {
+    id: "2",
     title: "Confess Web",
     description:
-      "An anonymous confession platform where users can share their thoughts and feelings securely.",
+      "An anonymous confession platform where users can share their thoughts and feelings securely with end-to-end encryption.",
     tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase"],
     image: "/images/confesweb.png",
     link: "https://confdev.vercel.app/",
   },
   {
-    id: "2",
+    id: "3",
     title: "Finance Dashboard",
     description:
-      "Real-time financial analytics dashboard with interactive charts and data visualization.",
-    tags: ["React", "D3.js", "Node.js"],
+      "Real-time financial analytics dashboard with interactive charts, budget tracking, and expense categorization.",
+    tags: ["Next.js", "D3.js", "PostgreSQL", "Prisma"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
     link: "#",
   },
   {
-    id: "3",
+    id: "4",
     title: "Calculator Python",
     description:
-      "A Python-based calculator application with clean UI and comprehensive mathematical operations.",
+      "A Python-based calculator application with clean GUI and comprehensive mathematical operations including scientific functions.",
     tags: ["Python", "Tkinter", "GUI"],
     image: "/images/calculator.png",
     link: "#",

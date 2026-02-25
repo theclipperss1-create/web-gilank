@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { Caption } from "./typography";
 import { MagneticButton } from "./micro-interactions";
+import { ContactForm } from "./contact-form";
 
 interface FooterProps {
   className?: string;
@@ -15,7 +16,7 @@ export function Footer({
     { label: "GitHub", href: "https://github.com/theclipperss1-create" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/m-gilank/" },
     { label: "Twitter", href: "https://x.com/TuckerNash68095" },
-    { label: "Email", href: "https://mail.google.com/mail/?view=cm&fs=1&to=lankdevv@gmail.com&su=Contact Inquiry" },
+    { label: "Email", href: "mailto:lankdevv@gmail.com" },
   ],
 }: FooterProps) {
   const currentYear = new Date().getFullYear();
@@ -30,45 +31,24 @@ export function Footer({
       )}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-          {/* Left Column - CTA */}
-          <div>
-            <Caption className="mb-4">Get In Touch</Caption>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6">
-              Let&apos;s work together
-            </h2>
-            <p className="text-white/60 max-w-md">
-              Have a project in mind? I&apos;m always open to discussing new opportunities
-              and interesting collaborations.
-            </p>
+        {/* Contact Form Section */}
+        <div className="mb-16">
+          <Caption className="mb-4 text-center">Get In Touch</Caption>
+          <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-4">
+            Let&apos;s work together
+          </h2>
+          <p className="text-white/60 text-center max-w-2xl mx-auto mb-8">
+            Have a project in mind? I&apos;m always open to discussing new opportunities
+            and interesting collaborations.
+          </p>
+          <ContactForm className="mx-auto" />
+        </div>
 
-            {/* CTA Button */}
-            <div className="mt-8">
-              <MagneticButton>
-                <a
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=lankdevv@gmail.com&su=Contact Inquiry"
-                  className={cn(
-                    "inline-flex items-center gap-2",
-                    "px-6 py-3.5 rounded-full",
-                    "bg-white text-black font-medium text-sm",
-                    "transition-all duration-300",
-                    "hover:bg-white/90 hover:scale-105",
-                    "active:scale-95"
-                  )}
-                >
-                  Say Hello
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </MagneticButton>
-            </div>
-          </div>
-
-          {/* Right Column - Social Links */}
-          <div className="md:flex md:flex-col md:justify-end">
-            <Caption className="mb-6">Connect</Caption>
-            <div className="flex flex-wrap gap-2">
+        {/* Social Links & Bottom Bar */}
+        <div className="pt-8 border-t border-white/5">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            {/* Social Links */}
+            <div className="flex flex-wrap justify-center gap-2">
               {socialLinks.map((link) => (
                 <MagneticButton key={link.label} strength={25}>
                   <a
@@ -87,20 +67,17 @@ export function Footer({
                 </MagneticButton>
               ))}
             </div>
-          </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className={cn(
-          "mt-16 pt-8 border-t border-white/5",
-          "flex flex-col md:flex-row justify-between items-center gap-4"
-        )}>
-          <p className="text-xs text-white/40">
-            © {currentYear} Gilank. All rights reserved.
-          </p>
-          <p className="text-xs text-white/40">
-            Designed with Apple aesthetics in mind.
-          </p>
+            {/* Copyright */}
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
+              <p className="text-xs text-white/40">
+                © {currentYear} Gilank. All rights reserved.
+              </p>
+              <p className="text-xs text-white/40">
+                Designed with Apple aesthetics in mind.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

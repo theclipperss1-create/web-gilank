@@ -1,186 +1,244 @@
-[![CodeGuide](/codeguide-backdrop.svg)](https://codeguide.dev)
+# Web Gilank - Portfolio
 
-# Web Gilank
+A modern, professional portfolio website built with Next.js 15, featuring a beautiful Apple-inspired design, project showcase, contact form, and SEO optimization.
 
-A modern web application starter template built with Next.js 15, featuring authentication, database integration, AI capabilities, and dark mode support.
+![Portfolio Preview](/public/og-image.png)
 
-## Tech Stack
+## 🚀 Features
+
+- **Modern Design** - Apple-inspired aesthetics with smooth animations
+- **Project Showcase** - Bento grid layout displaying your work
+- **Project Detail Pages** - Individual case study pages for each project
+- **Contact Form** - Integrated contact form with toast notifications
+- **SEO Optimized** - Complete metadata, Open Graph, Twitter cards, and structured data
+- **Responsive** - Works perfectly on all devices
+- **Dark Mode** - Beautiful dark theme by default
+- **Performance** - Optimized images, lazy loading, and fast load times
+- **Accessibility** - WCAG compliant with proper ARIA labels
+
+## 🛠️ Tech Stack
 
 - **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
-- **Language:** TypeScript
-- **Authentication:** [Clerk](https://clerk.com/)
-- **Database:** [Supabase](https://supabase.com/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com/)
-- **AI Integration:** [Vercel AI SDK](https://sdk.vercel.ai/)
-- **Theme System:** [next-themes](https://github.com/pacocoursey/next-themes)
+- **Animations:** Tailwind CSS animations + custom transitions
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Forms:** Custom with [Sonner](https://sonner.emilkowal.ski/) toasts
 
-## Prerequisites
+## 📋 Prerequisites
 
 Before you begin, ensure you have the following:
 - Node.js 18+ installed
-- A [Clerk](https://clerk.com/) account for authentication
-- A [Supabase](https://supabase.com/) account for database
-- Optional: [OpenAI](https://platform.openai.com/) or [Anthropic](https://console.anthropic.com/) API key for AI features
-- Generated project documents from [CodeGuide](https://codeguide.dev/) for best development experience
+- A code editor (VS Code recommended)
+- Git for version control
 
-## Getting Started
+## 🚀 Getting Started
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd codeguide-starter-kit
-   ```
+### 1. Clone the repository
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
+```bash
+git clone <repository-url>
+cd portofolio
+```
 
-3. **Environment Variables Setup**
-   - Copy the `.env.example` file to `.env.local`:
-     ```bash
-     cp .env.example .env.local
-     ```
-   - Fill in the environment variables in `.env.local` (see Configuration section below)
+### 2. Install dependencies
 
-4. **Start the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
 
-5. **Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.**
+### 3. Set up environment variables
 
-The homepage includes a setup dashboard with direct links to configure each service.
+Copy the `.env.example` file to `.env.local`:
 
-## Configuration
+```bash
+cp .env.example .env.local
+```
 
-### Clerk Setup
-1. Go to [Clerk Dashboard](https://dashboard.clerk.com/)
-2. Create a new application
-3. Go to API Keys
-4. Copy the `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY`
-
-### Supabase Setup
-1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
-2. Create a new project
-3. Go to Authentication → Integrations → Add Clerk (for third-party auth)
-4. Go to Project Settings > API
-5. Copy the `Project URL` as `NEXT_PUBLIC_SUPABASE_URL`
-6. Copy the `anon` public key as `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-
-### AI Integration Setup (Optional)
-1. Go to [OpenAI Platform](https://platform.openai.com/) or [Anthropic Console](https://console.anthropic.com/)
-2. Create an API key
-3. Add to your environment variables
-
-## Environment Variables
-
-Create a `.env.local` file in the root directory with the following variables:
+Update the values in `.env.local` with your actual credentials:
 
 ```env
-# Clerk Authentication
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
-CLERK_SECRET_KEY=your_secret_key
+# Domain Configuration
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
 
-# Supabase
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+# Optional: Email service for contact form
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
 
-# AI Integration (Optional)
-OPENAI_API_KEY=your_openai_api_key
-ANTHROPIC_API_KEY=your_anthropic_api_key
+# Optional: Analytics
+NEXT_PUBLIC_GA_ID=G-your_google_analytics_id
 ```
 
-## Features
+### 4. Add your content
 
-- 🔐 Authentication with Clerk (middleware protection)
-- 🗄️ Supabase Database with third-party auth integration
-- 🤖 AI Chat Interface with OpenAI/Anthropic support
-- 🎨 40+ shadcn/ui components (New York style)
-- 🌙 Dark mode with system preference detection
-- 🎯 Built-in setup dashboard with service status
-- 🚀 App Router with Server Components
-- 🔒 Row Level Security examples with Clerk user IDs
-- 📱 Responsive design with TailwindCSS v4
-- 🎨 Custom fonts (Geist Sans, Geist Mono, Parkinsans)
+#### Update Profile Image
+Replace `/public/images/profile.svg` with your actual photo:
+- Recommended size: 400x400px or larger
+- Format: JPG, PNG, or WebP
+- Update the image reference in `src/app/page.tsx`
 
-## Project Structure
+#### Update Projects
+Edit the `defaultProjects` array in `src/components/bento-grid.tsx`:
+```typescript
+{
+  id: "1",
+  title: "Your Project",
+  description: "Project description...",
+  tags: ["React", "TypeScript"],
+  image: "/images/your-project.png",
+  link: "https://your-project.com",
+}
+```
+
+#### Update Project Details
+Edit project case studies in `src/app/projects/[slug]/page.tsx`:
+- Update the `projects` object with your actual project data
+- Add features, challenges, and results for each project
+
+#### Update Personal Information
+- **Name & Title:** Update in `src/app/layout.tsx` metadata
+- **Social Links:** Update in `src/components/footer.tsx`
+- **Skills:** Update in `src/app/page.tsx` About section
+
+### 5. Start the development server
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see your portfolio!
+
+## 📁 Project Structure
 
 ```
-codeguide-starter-kit/
+portofolio/
+├── public/
+│   ├── images/           # Project images and profile photo
+│   ├── favicon.ico       # Site favicon
+│   └── og-image.png      # Social sharing image
 ├── src/
-│   ├── app/                    # Next.js app router pages
-│   │   ├── api/chat/          # AI chat API endpoint
-│   │   ├── globals.css        # Global styles with dark mode
-│   │   ├── layout.tsx         # Root layout with providers
-│   │   └── page.tsx           # Hero + setup dashboard
-│   ├── components/            # React components
-│   │   ├── ui/                # shadcn/ui components (40+)
-│   │   ├── chat.tsx           # AI chat interface
-│   │   ├── theme-provider.tsx # Theme context
-│   │   └── theme-toggle.tsx   # Dark mode toggle
-│   ├── lib/                   # Utility functions
-│   │   ├── supabase.ts        # Supabase client with Clerk auth
-│   │   ├── user.ts            # User utilities
-│   │   ├── utils.ts           # General utilities
-│   │   └── env-check.ts       # Environment validation
-│   └── middleware.ts          # Clerk route protection
-├── supabase/
-│   └── migrations/            # Database migrations with RLS examples
-├── CLAUDE.md                  # AI coding agent documentation
-├── SUPABASE_CLERK_SETUP.md   # Integration setup guide
-└── components.json            # shadcn/ui configuration
+│   ├── app/
+│   │   ├── projects/
+│   │   │   └── [slug]/
+│   │   │       └── page.tsx    # Project detail page
+│   │   ├── globals.css         # Global styles
+│   │   ├── layout.tsx          # Root layout with SEO
+│   │   ├── page.tsx            # Home page
+│   │   ├── sitemap.ts          # Dynamic sitemap
+│   │   └── manifest.ts         # PWA manifest
+│   ├── components/
+│   │   ├── ui/                 # shadcn/ui components
+│   │   ├── bento-grid.tsx      # Project grid
+│   │   ├── chat.tsx            # AI chat component
+│   │   ├── contact-form.tsx    # Contact form
+│   │   ├── footer.tsx          # Footer
+│   │   ├── hero.tsx            # Hero section
+│   │   ├── navigation.tsx      # Navigation bar
+│   │   ├── structured-data.tsx # JSON-LD structured data
+│   │   └── ...
+│   └── lib/
+│       ├── utils.ts            # Utility functions
+│       └── ...
+├── .env.example                # Environment variables template
+├── next.config.ts              # Next.js configuration
+└── package.json
 ```
 
-## Database Integration
+## 🎨 Customization
 
-This starter includes modern Clerk + Supabase integration:
+### Colors
+The color scheme is defined in `src/app/globals.css`. Modify the CSS variables to change the theme:
 
-- **Third-party auth** (not deprecated JWT templates)
-- **Row Level Security** policies using `auth.jwt() ->> 'sub'` for Clerk user IDs
-- **Example migrations** with various RLS patterns (user-owned, public/private, collaboration)
-- **Server-side client** with automatic Clerk token handling
+```css
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  /* ... */
+}
+```
 
-## AI Coding Agent Integration
+### Fonts
+Fonts are configured in `src/app/layout.tsx`. Change the Google Fonts imports to use different fonts.
 
-This starter is optimized for AI coding agents:
+### Animations
+Animation classes use Tailwind's `animate-in` utilities. Modify in component files or add custom animations in `globals.css`.
 
-- **`CLAUDE.md`** - Comprehensive project context and patterns
-- **Setup guides** with detailed integration steps
-- **Example migrations** with RLS policy templates
-- **Clear file structure** and naming conventions
-- **TypeScript integration** with proper type definitions
+## 📤 Deployment
 
-## Documentation Setup
+### Deploy to Vercel (Recommended)
 
-To implement the generated documentation from CodeGuide:
+1. Push your code to GitHub
+2. Go to [Vercel](https://vercel.com)
+3. Import your repository
+4. Set environment variables
+5. Deploy!
 
-1. Create a `documentation` folder in the root directory:
-   ```bash
-   mkdir documentation
-   ```
+### Deploy to Other Platforms
 
-2. Place all generated markdown files from CodeGuide in this directory:
-   ```bash
-   # Example structure
-   documentation/
-   ├── project_requirements_document.md             
-   ├── app_flow_document.md
-   ├── frontend_guideline_document.md
-   └── backend_structure_document.md
-   ```
+```bash
+npm run build
+npm run start
+```
 
-3. These documentation files will be automatically tracked by git and can be used as a reference for your project's features and implementation details.
+Or export as static site:
+```bash
+npm run build
+# Output in .next/static
+```
 
-## Contributing
+## 🔧 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+
+## 📝 SEO Checklist
+
+Before launching, make sure to:
+
+- [ ] Update `metadataBase` in `layout.tsx` with your domain
+- [ ] Create `/public/og-image.png` (1200x630px)
+- [ ] Update all social media links in `footer.tsx`
+- [ ] Generate and add favicon files
+- [ ] Submit sitemap to Google Search Console
+- [ ] Add Google Analytics ID (optional)
+- [ ] Test with [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
+
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- Design inspired by Apple's aesthetic
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Icons from [Lucide](https://lucide.dev/)
+
+## 📬 Contact
+
+Have questions? Reach out:
+- **Email:** lankdevv@gmail.com
+- **LinkedIn:** [linkedin.com/in/m-gilank](https://www.linkedin.com/in/m-gilank/)
+- **GitHub:** [github.com/theclipperss1-create](https://github.com/theclipperss1-create)
+- **Twitter:** [@TuckerNash68095](https://x.com/TuckerNash68095)
+
+---
+
+Built with ❤️ by Gilank
