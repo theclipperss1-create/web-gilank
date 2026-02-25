@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,12 +8,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { FadeIn } from "@/components/micro-interactions";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 interface ContactFormProps {
   className?: string;
 }
 
 export function ContactForm({ className }: ContactFormProps) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -36,9 +38,17 @@ export function ContactForm({ className }: ContactFormProps) {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send to your backend or email service
-      // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Send email using EmailJS
+      if (formRef.current) {
+        await emailjs.sendForm(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "your_service_id",
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "your_template_id",
+          formRef.current,
+          {
+            publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "your_public_key",
+          }
+        );
+      }
 
       toast.success("Message sent!", {
         description: "Thank you for reaching out. I'll get back to you soon.",
@@ -47,7 +57,7 @@ export function ContactForm({ className }: ContactFormProps) {
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (_error) {
       toast.error("Failed to send message", {
-        description: "Please try again later or email me directly.",
+        description: "Please try again later or email me directly at lankdevv@gmail.com",
       });
     } finally {
       setIsSubmitting(false);
@@ -56,7 +66,7 @@ export function ContactForm({ className }: ContactFormProps) {
 
   return (
     <FadeIn className={cn("w-full max-w-2xl", className)}>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-white/70 text-sm">
