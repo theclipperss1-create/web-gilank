@@ -217,6 +217,16 @@ function BentoCard({ project, index, isVisible, isHovered, onHoverChange }: Bent
 const defaultProjects: Project[] = [
   {
     id: "1",
+    title: "Groupify",
+    description:
+      "A collaborative photo-sharing application for group trips and events with face recognition and smart filtering to automatically organize and find photos.",
+    tags: ["React", "Vite", "Firebase", "Tailwind CSS", "JavaScript", "Face Recognition"],
+    image: "/images/groupify.png",
+    link: "https://groupify-six.vercel.app/",
+    isExternal: true, // Opens external link directly
+  },
+  {
+    id: "2",
     title: "Markdown Note",
     description:
       "A clean and minimalist note-taking application with Markdown support, real-time preview, and local storage persistence.",
@@ -226,7 +236,7 @@ const defaultProjects: Project[] = [
     isExternal: true, // Opens external link directly
   },
   {
-    id: "2",
+    id: "3",
     title: "Confess Web",
     description:
       "An anonymous confession platform where users can share their thoughts and feelings securely with end-to-end encryption.",
@@ -236,7 +246,7 @@ const defaultProjects: Project[] = [
     isExternal: true, // Opens directly in new tab
   },
   {
-    id: "3",
+    id: "4",
     title: "Finance Dashboard",
     description:
       "Real-time financial analytics dashboard with interactive charts, budget tracking, and expense categorization.",
@@ -245,7 +255,7 @@ const defaultProjects: Project[] = [
     link: "#",
   },
   {
-    id: "4",
+    id: "5",
     title: "Calculator Python",
     description:
       "A Python-based calculator application with clean GUI and comprehensive mathematical operations including scientific functions.",
