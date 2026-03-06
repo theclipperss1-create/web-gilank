@@ -221,7 +221,7 @@ const defaultProjects: Project[] = [
     description:
       "A collaborative photo-sharing application for group trips and events with face recognition and smart filtering to automatically organize and find photos.",
     tags: ["React", "Vite", "Firebase", "Tailwind CSS", "JavaScript", "Face Recognition"],
-    image: "/images/groupify.png",
+    image: "/images/Groupify.png",
     link: "https://groupify-six.vercel.app/",
     isExternal: true, // Opens external link directly
   },
