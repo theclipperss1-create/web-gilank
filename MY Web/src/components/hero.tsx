@@ -116,8 +116,8 @@ export function Hero({
         >
           {[
             { value: "2+", label: "Years Experience" },
-            { value: "30+", label: "Projects Completed" },
-            { value: "20+", label: "Happy Clients" },
+            { value: "20+", label: "Projects Completed" },
+            { value: "7+", label: "Happy Clients" },
           ].map((stat) => (
             <div key={stat.label} className="group text-center">
               <div className="text-4xl md:text-5xl font-semibold text-white/90 group-hover:text-white transition-colors duration-500">

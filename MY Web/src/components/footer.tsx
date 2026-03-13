@@ -99,7 +99,7 @@ export function Footer({
             © {currentYear} Gilank. All rights reserved.
           </p>
           <p className="text-xs text-white/40">
-            Designed with Apple aesthetics in mind.
+            Enjoy the experience.
           </p>
         </div>
       </div>

@@ -221,8 +221,8 @@ export default function Home() {
           <FadeIn>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               {[
-                { value: "30+", label: "Projects Completed" },
-                { value: "20+", label: "Happy Clients" },
+                { value: "20+", label: "Projects Completed" },
+                { value: "7+", label: "Happy Clients" },
                 { value: "2+", label: "Years Experience" },
                 { value: "100%", label: "Client Satisfaction" },
               ].map((stat, index) => (
