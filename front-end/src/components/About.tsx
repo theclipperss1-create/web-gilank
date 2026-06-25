@@ -7,16 +7,16 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ t }) => {
   const technologies = [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "Firebase",
-    "Tailwind CSS",
-    "GSAP",
-    "Framer Motion",
-    "PostgreSQL",
-    "Git",
+    { name: "React", url: "https://react.dev" },
+    { name: "Next.js", url: "https://nextjs.org" },
+    { name: "TypeScript", url: "https://www.typescriptlang.org" },
+    { name: "Node.js", url: "https://nodejs.org" },
+    { name: "Firebase", url: "https://firebase.google.com" },
+    { name: "Tailwind CSS", url: "https://tailwindcss.com" },
+    { name: "GSAP", url: "https://gsap.com" },
+    { name: "Framer Motion", url: "https://motion.dev" },
+    { name: "PostgreSQL", url: "https://www.postgresql.org" },
+    { name: "Git", url: "https://git-scm.com" },
   ];
 
   return (
@@ -110,12 +110,15 @@ export const About: React.FC<AboutProps> = ({ t }) => {
               </span>
               <div className="flex flex-wrap gap-2 mt-4">
                 {technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3.5 py-1.5 text-xs font-medium rounded-full bg-white/[0.03] border border-white/5 hover:border-white/20 hover:bg-white/[0.06] hover:text-white transition-all duration-300 cursor-default"
+                  <a
+                    key={tech.name}
+                    href={tech.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-1.5 text-xs font-medium rounded-full bg-white/[0.03] border border-white/5 hover:border-white/20 hover:bg-white/[0.06] hover:text-accent hover:shadow-[0_0_12px_rgba(52,211,153,0.15)] transition-all duration-300 cursor-pointer block"
                   >
-                    {tech}
-                  </span>
+                    {tech.name}
+                  </a>
                 ))}
               </div>
             </div>
