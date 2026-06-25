@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Parkinsans:wght@300;400;500;600;700;800&family=Geist+Mono:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist", "Geist Sans", system-ui, sans-serif;
+  --font-display: "Geist", "Geist Sans", system-ui, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+
+  --color-accent: #34d399; /* Bright Minty Emerald */
+  --color-accent-hover: #6ee7b7; /* Light Emerald */
+  --color-accent-muted: rgba(52, 211, 153, 0.08);
+
+  --color-canvas: #030605; /* Deep Emerald Obsidian */
+  --color-surface: #080f0c; /* Deep Forest surface */
+  --color-surface-hover: #0f1a16; /* Slightly lighter forest slate */
+  --color-border-whisper: rgba(52, 211, 153, 0.12);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: #f4f4f5; /* Zinc-100 */
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Premium Liquid Glass Refraction Effect (Optimized for performance) */
+.liquid-glass {
+  background: rgba(8, 15, 12, 0.75); /* Deep emerald-slate translucent */
+  border: 1px solid rgba(52, 211, 153, 0.08);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 20px 40px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* Dedicated Glass Blur for Navigation Overlay */
+.nav-glass {
+  background: rgba(3, 6, 5, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(52, 211, 153, 0.08);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 30px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover shadow with glow tint */
+.hover-glow-white:hover {
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a; /* Zinc-800 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46; /* Zinc-700 */
+}
+
+/* Pinned timeline animations or other GSAP transitions */
+.pinned-year-active {
+  color: var(--color-accent);
+  font-weight: 800;
+  scale: 1.1;
+  transition: all 0.3s ease;
+}
+
+/* Infinite Horizontal Marquee for Projects */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 45s linear infinite;
+  will-change: transform;
+}

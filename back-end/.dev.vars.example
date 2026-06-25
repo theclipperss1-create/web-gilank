@@ -1,0 +1,3 @@
+# Copy this file to .dev.vars and replace with your actual keys
+RESEND_API_KEY=re_your_api_key_here
+TO_EMAIL=gilankdev@gmail.com

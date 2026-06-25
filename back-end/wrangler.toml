@@ -1,0 +1,5 @@
+name = "web-portofolio-backend"
+main = "src/index.ts"
+compatibility_date = "2024-03-01"
+
+# Environment variables for local development can be placed in .dev.vars
